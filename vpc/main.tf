@@ -108,3 +108,23 @@ resource "aws_security_group" "qoala_elb" {
   }
 
 }
+
+resource "aws_security_group" "qoala_ec2_sg" {
+  name   = "qoala-sg_for_ec2"
+  vpc_id = aws_vpc.vpc.id
+  
+  ingress {
+    description      = "Allow http request from anywhere"
+    protocol         = "tcp"
+    from_port        = 80
+    to_port          = 80
+    cidr_blocks      = aws_security_group.qoala_elb.id
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+}

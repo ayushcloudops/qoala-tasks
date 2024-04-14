@@ -17,3 +17,7 @@ output "pub_subnet_id_2" {
 output "sg_id" {
   value = aws_security_group.qoala_elb.id
 }
+
+output "security_id" {
+  value = aws_security_group.qoala_ec2_sg.id
+}

@@ -5,6 +5,7 @@ module "vpc" {
 module "ec2" {
   source = "./ec2"
   subnet_id =   module.vpc.subnet_id
+  security_id =   module.vpc.security_id
 }
 
 module "TG" {
